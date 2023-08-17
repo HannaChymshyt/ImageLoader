@@ -1,0 +1,27 @@
+@startuml
+class iLoader.PngViewer {
++ void viewPNG(String)
+}
+interface iLoader.FormatViewer {
+~ void view(String,String)
+}
+class iLoader.ImageLoader {
++ {static} void main(String[])
+}
+interface iLoader.ExtendedFormatViewer {
+~ void viewPNG(String)
+}
+class iLoader.FileViewer {
+~ FormatAdapter formatAdapter
++ void view(String,String)
+}
+class iLoader.FormatAdapter {
+~ ExtendedFormatViewer extendedFormatViewer
++ void view(String,String)
+}
+
+
+iLoader.ExtendedFormatViewer <|.. iLoader.PngViewer
+iLoader.FormatViewer <|.. iLoader.FileViewer
+iLoader.FormatViewer <|.. iLoader.FormatAdapter
+@enduml
